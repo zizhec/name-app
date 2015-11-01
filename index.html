@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<body ng-app="namingApp">
+
+	<div ng-controller="ctrl">
+
+		<div >
+<!-- 			<input type="text" ng-model="tmpLetter" ng-click="addLetter(tmpLetter)"> -->
+			<ul>
+				<li ng-repeat="x in boyLetterList">
+					{{ x }}
+				</li>
+			</ul>
+<!-- 			<ul>
+				<li ng-repeat="x in boyNameList">
+					{{x}}
+				</li>
+			</ul> -->
+
+		</div>
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script type="text/javascript" src="name.js">
+
+	angular.module('namingApp', [])
+	.controller('ctrl', ['$scope', function($scope) {
+
+		$scope.boyLetterList = ['君','博','海','杰','瀚','旭'];
+
+		$scope.boyNameList = [];
+
+
+
+		var fullList = function(letterList, nameList) {
+			for (var i = letterList.length - 1; i >= 0; i--) {
+				
+				for (var j = letterList.length - 1; j >= 0; i--) {
+					nameList.push('蔡' + letterList[i] + letterList[j]);
+				};
+				// letterList[i]
+			};
+		}
+
+
+		$scope.addLetter = function(letter) {
+			$boyLetterList.push(letter);
+			$boyNameList = fullList($boyLetterList, $boyNameList); 
+		}
+	}]);
+</script>
+</body>
+</html>
